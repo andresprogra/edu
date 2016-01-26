@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="well col-xs-12 col-md-6 col-md-offset-3">
+    <h2>Editar <%= resource_name.to_s.humanize %></h2>
+    
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <div class="alert alert-dismissible alert-danger">
+        <%= devise_error_messages! %>
+      </div>
+      <div class="field">
+        <%= f.label :name, "Nombre" %><br />
+        <%= f.text_field :name, autofocus: true,class:"form-control input-lg" %>
+      </div>
+      
+
+      <div class="field">
+        <%= f.label :apellido %><br />
+        <%= f.text_field :apellido, autofocus: true,class:"form-control input-lg" %>
+      </div>
+      
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true,class:"form-control input-lg" %>
+      </div>
+    
+      <!--<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>-->
+      
+
+      <div class="field col-xs-6">
+          <div>
+              <%= f.label :semestre %>
+              <%#= f.select :semestre, [['horrible', 1], ['poor', 2], ['mediocre', 3], ['good', 4], ['great', 5]], :class => 'my_style_class'  %>
+              
+              <%= f.select(:semestre, ['Primero', 'Segundo', 'Tercero', 'Cuarto', 'Quinto', 'Sexto']) %>
+            </div>
+      </div>  
+      <div class="field col-xs-6">
+        <%= f.label :grupo %>
+        <%= f.select(:grupo, ['A', 'B', 'C', 'D', 'E', 'F']) %>
+      </div>
+
+      <div class="fiel">
+        <%= f.label :carrera%>
+        <%= f.select(:carrera, ['Agropecuario', 'Programación']) %>
+      </div>
+      <!--    
+      <br />
+      <br />
+      <p>Por su seguridad, ingresa tu contraseña</p>
+      <hr />
+      <div class="field">
+        <%= f.label :current_password, "Contraseña actual" %><br />
+        <%= f.password_field :current_password, autocomplete: "off",class:"form-control input-lg", placeholder: "Password" %>
+      </div>
+      
+      <div class="field">
+        <%= f.label :password, "Contraseña nueva" %> <i>(leave blank if you don't want to change it)</i><br />
+        <%= f.password_field :password, autocomplete: "off",class:"form-control input-lg" %>
+      </div>
+    
+      <div class="field">
+        <%= f.label :password_confirmation, "Confirmar contraseña nueva" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control input-lg"%>
+      </div>
+    
+      -->
+    
+      <div class="actions">
+        <%= f.submit "Actualizar", class: "btn btn-raised btn-primary" %>
+      </div>
+    <% end %>
+    
+    <!--<h3>Cancel my account</h3>
+    
+    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>-->
+    
+    <!--<%= link_to "Back", :back %>-->
+  </div>
+</div>

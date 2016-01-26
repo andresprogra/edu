@@ -1,0 +1,87 @@
+<% if user_signed_in? %>
+    <div class="container">
+        <section id="avisos" class="col-xs-12 col-md-5">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><%=link_to "Avisos", ads_path%></h3>
+                </div>
+                <div class="panel-body">
+                    <% if @ads_count > 0 %>            
+                        
+                        <% @ads.each do |ad| %>
+                            <div class="list-group">
+                                <div class="list-group-item">
+                                    <div class="row-action-primary date">
+                                        <p class="text-center"><%if ad.date != nil %><%=ad.date.day%><%end%></p>
+                                        <hr />
+                                        <p class="text-center"><%if ad.date != nil %><%=Ad.last.date.strftime("%b")%><%end%></p>
+                                    </div>
+                                    <div class="row-content">
+                                        <div class="action-secondary"><i class="material-icons">info</i></div>
+                                        <h4 class="list-group-item-heading"><%= link_to ad.title, ad %></h4>
+                                        <!--<h4 class="list-group-item-heading"><%= link_to ad.title, ad %></h4>-->
+                                        
+                                        <p class="list-group-item-text"><%= ad.description %></p>
+                                        
+                                    </div>
+                                </div>
+                                
+                                <!--<div class="list-group-separator"></div>-->
+                                <hr />
+                            </div>
+                        <%end%>
+                    <%else%>
+                        <div class="list-group">
+                            <div class="list-group-item">
+                                <div class="row-content">
+                                    <div class="action-secondary"><i class="material-icons">info</i></div>
+                                    <h4 class="list-group-item-heading">No hay avisos</h4>
+                                    <p class="list-group-item-text">Hasta el momento, no hay avisos vigentes.</p>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                    <%end%>
+                </div>
+            </div>
+        </section>
+
+        <section class="col-xs-12 col-md-5 classmate">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Compañeros de clase</h3>
+                </div>
+                <div class="panel-body">
+                    <% if @classmate_count > 0 %>            
+                        
+                        <% @classmate.each do |classmate| %>
+                            <div class="list-group">
+                                <div class="list-group-item">
+                                    <div class="row-action-primary">
+                                        <i class="material-icons">face</i>
+                                    </div>
+                                    <div class="row-content">
+                                        <div class="action-secondary"><p class="text-center"><%=classmate.puntos%></p></div>
+                                        <h4 class="list-group-item-heading"><%=classmate.name%></h4>
+                                        <!--<h4 class="list-group-item-heading"><%#= link_to ad.title, ad %></h4>-->
+                                        <p class="list-group-item-heading"><%=classmate.apellido%></p>
+                                
+                                    </div>
+                                </div>
+                                
+                                <div class="list-group-separator"></div>
+                            </div>
+                        <%end%>
+                    <%end%>
+                </div>
+            </div>
+        </section>
+        <section class="col-xs-12 col-md-2 puntos">
+            <span class="text-center cara material-icons">grade</span>
+            <h1 class="text-center"><%=current_user.puntos%></h1>
+            <p class="text-center">PUNTOS</p>
+        </section>
+    </div>
+<%end%>
+
+

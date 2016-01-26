@@ -1,0 +1,20 @@
+<%= form_for(@ad) do |f| %>
+    <% @ad.errors.full_messages.each do |message| %>
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>* <%= message%></strong>
+        </div>
+    <%end%>
+    <div class="form-group">
+        <%= f.text_field :title, placeholder: "Titulo", class:"form-control input-lg" %>
+    </div>
+    <div class="form-group">
+        <%= f.text_field :description, placeholder: "Descripción del aviso", class:"form-control input-lg" %>
+    </div>
+    <div>
+        <%= f.date_field :date %>
+    </div>
+    <div>
+        <%= f.submit "Guardar", class:"btn btn-js btn-raised btn-success btn-lg" %>
+    </div>
+<%end%>

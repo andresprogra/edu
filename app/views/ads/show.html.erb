@@ -1,0 +1,42 @@
+<div class="container">
+	<div class="bg-white padding-small">
+		<h2><%= @ad.title %></h2>
+		<hr />
+		<p><%= @ad.description %></p>
+		<%#= @ad.date %>
+		<% unless @ad.user.nil? %>
+			<%if @ad.user.name %>
+				<p class="font-12">Escrito por <%= link_to @ad.user.name, @ad.user %></p>
+			<%elsif @ad.user.email %>
+				<p class="font-12">Aviso publicado por: <%= @ad.user.email%></p>
+			<%else%>
+
+			<%end%>
+		<% end %>
+		<% if current_user.cargo == 0 %>
+			<%=link_to "Eliminar aviso",  { action: :destroy, id: @ad.id }, method: :delete%>
+		<%end%>
+		<%if @ad.user.id == current_user.id %>
+			<%=link_to "Editar aviso", { action: :update, id: @ad.id }, method: :update%>
+		<%end%>
+	</div>
+</div>
+<div class="container">
+	<div class="col-xs-12">
+		<h4>¿Tienes preguntas?</h4>
+		<%= render "questions/form" %>
+	</div>
+	<div class="col-xs-12 col-md-11 col-md-offset-1 questions">
+		<ul id="questions-box">
+			<% @ad.questions.each do |question|%>
+				<li class="list-style bg-white padding-small">
+					<p>
+						<%= question.body%>
+					</p>
+					<p>Publicado por <%= link_to question.user.name, question.user%> <%#= question.user.apellido%> el <%= question.created_at%> </p>
+				</li>
+			<%end%>
+		</ul>
+	</div>
+	
+</div>

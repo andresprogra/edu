@@ -1,0 +1,63 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.field{
+	margin:15px 0;
+}
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+.btn-group{
+	width:100%;
+	margin: 10px 0;
+}
+
+#user_semestre,#user_grupo,#user_carrera{
+	width:100%;
+	padding: 10px 5px
+}
+
+.panel-title a:hover{
+	color: white;	
+}
+
+#error_explanation h2{
+	font-size: 1.4em;
+}
+span.cara{
+	font-size:100px;
+	margin-bottom:5px;
+	width:100%;
+	color:#009688;
+}
+.portada{
+	padding: 2em;
+	background-size:cover !important;
+}
+.portada_2{
+	padding:1em 0;
+	background: rgba(0,0,0,.5)
+}
+.portada_2 p{
+	font-size:1.3em;
+	color:white;
+	margin:0;
+}
+.portada h1{
+	color:white;
+	margin-top:0px;
+	font-weight: 500
+}
+.padding-md{
+	padding:5em;
+}
+.font-12{font-size:12px !important;}
+.bg-white{background:white;margin:2em 0;}
+.padding-small{padding:.5em 1em;}
+.list-style{list-style-type: none;}
+.row-action-primary.date p,hr{
+	margin:0;
+	font-size:1.8em;
+}

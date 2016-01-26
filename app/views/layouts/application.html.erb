@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Educación</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <!-- Material Design fonts -->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <%= csrf_meta_tags %>
+  <!-- Latest compiled and minified CSS -->
+  
+</head>
+<body>
+  <header>
+    
+    <div class="bs-component">
+          <div class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <!--<a class="navbar-brand" href="javascript:void(0)">Mi plataforma</a>-->
+                <%name="Mi plataforma"%>
+                <%= link_to name, root_path, class:"navbar-brand"%>
+              </div>
+              <div class="navbar-collapse collapse navbar-responsive-collapse">
+                <%if user_signed_in?%>
+                  <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                      <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Avisos
+                      <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                          <li>
+                            <%= link_to "Ver avisos", ads_path%>
+                          </li>
+                          <li>
+                            <%=link_to "Crear avisos", new_ad_path%>
+                          </li>
+                          <li>
+                            <%=link_to "Avisos vencidos", ads_vencidos_path%>
+                          </li>
+                      </ul>
+                    </li>
+                    <li><a href="javascript:void(0)">Link</a></li>
+                    <li class="dropdown">
+                      <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                        <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="javascript:void(0)">Another action</a></li>
+                        <li><a href="javascript:void(0)">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Dropdown header</li>
+                        <li><a href="javascript:void(0)">Separated link</a></li>
+                        <li><a href="javascript:void(0)">One more separated link</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                <%end%>
+                <ul class="nav navbar-nav navbar-right">
+                  <% if user_signed_in? %>
+                    <% if current_user.name != nil %>
+                      <li class="dropdown">
+                        <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown"><%if current_user.name != nil%><%=current_user.name%><%end%>
+                        <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a href="#">
+                            <%if current_user.name != nil%><%=current_user.name%> <%=current_user.apellido%><%end%>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#">
+                            <%if current_user.semestre != nil && current_user.grupo != nil%><%=current_user.semestre%> <%= current_user.grupo%><%end%>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#">
+                            <%if current_user.carrera != nil%><%=current_user.carrera%><%end%>
+                            </a>
+                          </li>
+                          <li class="divider"></li>
+                          <li class="dropdown-header">Configuración</li>
+                          <%if user_signed_in? %>
+                            <li>
+                              <%=link_to "Ver perfil", users_path%>
+                            </li>
+                            <li>
+                              <li><%=link_to "Editar Perfil", edit_user_registration_path%></li>
+                            </li>
+                            <li>
+                              <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete%>
+                            </li>
+                          <%end%>
+                        </ul>
+                      </li>
+                    <%end%>
+                  <%end %>
+                  <%unless user_signed_in? %>
+                    <li>
+                      <%= link_to "Iniciar sesión", new_user_session_path%>
+                    </li>
+                    <li>
+                      <%= link_to "Registrarte", new_user_registration_path %>
+                    </li>
+                  <%end%> 
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+        <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div></div>
+  </header>
+  
+  
+  <!--<div class="alert alert-dismissible alert-danger">-->
+  <div class="container">
+    <%if alert %>
+      <div class="alert alert-dismissible alert-warning">
+        <!--<button type="button" class="close" data-dismiss="alert">×</button>-->
+        <p class=""><%= alert %></p>  
+      </div>
+    <%end %>
+    <%if notice %>
+      <div class="alert alert-dismissible alert-info">
+        <!--<button type="button" class="close" data-dismiss="alert">×</button>-->
+        <strong><%= notice %></strong>
+      </div>
+    <%end%>
+  </div>
+  <!--<div class="alert alert-dismissible alert-warning">-->
+ 
+  <%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="portada col-xs-12" style="background: url(../assets/<%= @background %>) no-repeat center">
+		<div class="portada_2 col-xs-12">
+			<div class="col-xs-12 col-md-9">
+				<span class="text-center cara material-icons">tag_faces</span> 
+				<h1 class="text-center name"><%if @user.name != nil && @user.apellido != nil %><%= @user.name + " " + @user.apellido%><%end%></h1 >
+				<p class="text-center"><%= @cargo%></p>
+			</div>
+			<div class="col-xs-12 col-md-3">
+				<span class="text-center cara material-icons">grade</span>
+				<h1 class="text-center"><%=@user.puntos%></h1>
+				<p class="text-center">PUNTOS</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="jumbotron padding-md">
+		<p>Semestre: <%if @user.semestre !=nil%><%=@user.semestre%><%end%></p>
+		<p>Grupo: <%if @user.grupo !=nil%><%=@user.grupo%><%end%></p>
+		<p>Carrera: <%if @user.carrera != nil%><%=@user.carrera%><%end%></p>
+	</div>
+</div>
