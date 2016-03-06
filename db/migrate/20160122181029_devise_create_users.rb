@@ -38,6 +38,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :semestre
       t.string :grupo
       t.string :carrera
+      t.string :matricula
       t.integer :puntos, default: 0
 
       t.timestamps null: false

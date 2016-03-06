@@ -64,6 +64,9 @@
                 <%end%>
                 <ul class="nav navbar-nav navbar-right">
                   <% if user_signed_in? %>
+                    
+                      <li class="nav nav-pills active"><a href="javascript:void(0)">Puntos: <span class="badge"><%=current_user.puntos%></span></a></li>
+
                     <% if current_user.name != nil %>
                       <li class="dropdown">
                         <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown"><%if current_user.name != nil%><%=current_user.name%><%end%>
@@ -122,13 +125,13 @@
   <div class="container">
     <%if alert %>
       <div class="alert alert-dismissible alert-warning">
-        <!--<button type="button" class="close" data-dismiss="alert">×</button>-->
+        <button type="button" class="close" data-dismiss="alert">×</button>
         <p class=""><%= alert %></p>  
       </div>
     <%end %>
     <%if notice %>
       <div class="alert alert-dismissible alert-info">
-        <!--<button type="button" class="close" data-dismiss="alert">×</button>-->
+        <button type="button" class="close" data-dismiss="alert">×</button>
         <strong><%= notice %></strong>
       </div>
     <%end%>

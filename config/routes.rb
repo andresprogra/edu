@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
+  
+  resources :grupos
   get 'ads/vencidos'
+  
   resources :ads, path: "avisos" do
     resources :questions, only: [:create,:destroy,:update]
   end
   devise_for :users, path: "panel", controllers: { registrations: "users/registrations" }
   
   
-  
   resources :users, path: "perfil"
+  resources :welcome
+  get 'users/all'
+
+  
   #resources :ads,path: "avisos"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -64,3 +70,4 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 end
+

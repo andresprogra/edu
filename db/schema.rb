@@ -11,18 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160125080430) do
+ActiveRecord::Schema.define(version: 20160128022827) do
 
   create_table "ads", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.date     "date"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "vistas",      default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "user_id"
   end
 
   add_index "ads", ["user_id"], name: "index_ads_on_user_id"
+
+  create_table "grupos", force: :cascade do |t|
+    t.string   "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "questions", force: :cascade do |t|
     t.integer  "user_id"
@@ -53,6 +60,7 @@ ActiveRecord::Schema.define(version: 20160125080430) do
     t.string   "semestre"
     t.string   "grupo"
     t.string   "carrera"
+    t.string   "matricula"
     t.integer  "puntos",                 default: 0
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false

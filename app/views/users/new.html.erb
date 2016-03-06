@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="jumbotron">
+        <%= form_for(@yolo) do |f| %>
+
+            <% @yolo.errors.full_messages.each do |message| %>
+                <div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>* <%= message%></strong>
+                </div>
+            <%end%>
+            <div class="form-group">
+                <%=f.label :matricula%>
+                <%= f.text_field :matricula, placeholder: "Matricula", class:"form-control input-lg" %>
+            </div>
+            <div class="form-group">
+                <%=f.label :name%>
+                <%= f.text_field :name, placeholder: "Nombre", class:"form-control input-lg" %>
+            </div>
+            <div class="form-group">
+                <%=f.label :apellido%>
+                <%= f.text_field :apellido, placeholder: "Apellido", class:"form-control input-lg" %>
+            </div>
+            <div class="form-group">
+                <%=f.label :semestre%>
+                <%= f.text_field :semestre, placeholder: "Semestre", class:"form-control input-lg" %>
+            </div>
+            <div>
+                <%= f.submit "Guardar", class:"btn btn-js btn-raised btn-success btn-lg" %>
+            </div>
+        <%end%>
+    </div>
+</div>

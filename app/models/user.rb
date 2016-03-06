@@ -5,11 +5,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :ads
   has_many :questions
-  validates :name, presence: true
-  validates :apellido, presence: true
-  validates :semestre, presence: true
-  validates :email, presence: true
-  validates :grupo, presence: true
+  validates :name, presence: true, :on => :update
+  validates :apellido, presence: true, :on => :update
+  validates :semestre, presence: true, :on => :update
+  validates :email, presence: true, :on => :update
+  validates :grupo, presence: true, :on => :update
 
   def update_puntos
   	self.update(puntos: self.puntos + 1)

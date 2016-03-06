@@ -7,6 +7,7 @@
 		<% unless @ad.user.nil? %>
 			<%if @ad.user.name %>
 				<p class="font-12">Escrito por <%= link_to @ad.user.name, @ad.user %></p>
+				<p class="font-12"><i class="font-12 material-icons">visibility</i><%=@ad.vistas%> visitas.</p>
 			<%elsif @ad.user.email %>
 				<p class="font-12">Aviso publicado por: <%= @ad.user.email%></p>
 			<%else%>

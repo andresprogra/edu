@@ -5,6 +5,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def new
   #   super
   # end
+  def all
+    @user = User.all
+  end
   def show
     @user = User.find(params[:id])
   end
@@ -66,6 +69,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
   private
   def user_params
-    params.require(:user).permit(:name,:apellido,:semestre,:grupo,:carrera)
+    params.require(:user).permit(:name,:apellido,:semestre,:grupo,:carrera,:matricula)
   end
 end

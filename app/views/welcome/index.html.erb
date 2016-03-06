@@ -22,6 +22,7 @@
                                         <!--<h4 class="list-group-item-heading"><%= link_to ad.title, ad %></h4>-->
                                         
                                         <p class="list-group-item-text"><%= ad.description %></p>
+                                        <p class="font-12 list-group-item-text"><i class="font-12 material-icons">visibility</i> <%= ad.vistas%> vistas.</p>
                                         
                                     </div>
                                 </div>
@@ -62,9 +63,9 @@
                                     </div>
                                     <div class="row-content">
                                         <div class="action-secondary"><p class="text-center"><%=classmate.puntos%></p></div>
-                                        <h4 class="list-group-item-heading"><%=classmate.name%></h4>
+                                        <h4 class="list-group-item-heading"><%= link_to classmate.name, user_path(classmate.id)%></h4>
                                         <!--<h4 class="list-group-item-heading"><%#= link_to ad.title, ad %></h4>-->
-                                        <p class="list-group-item-heading"><%=classmate.apellido%></p>
+                                        <p class="list-group-item-heading"><%= link_to classmate.apellido, user_path(classmate.id)%></p>
                                 
                                     </div>
                                 </div>

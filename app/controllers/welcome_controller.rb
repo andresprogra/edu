@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   def index
     if current_user 
-      if current_user.name == nil
+      if current_user.name == nil or current_user.matricula ==nil
     	 redirect_to edit_user_registration_path, alert: "Para continuar con el uso de la plataforma, debes llenar toda tu información."
       end
       t = Date.today()
@@ -21,6 +21,10 @@ class WelcomeController < ApplicationController
   	#if user_singned_in?
   		#if curret_user.	
   	#end
+    @user =User.all
+    
 
   end
+ 
+
 end

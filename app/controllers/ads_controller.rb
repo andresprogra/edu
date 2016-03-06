@@ -21,6 +21,8 @@ class AdsController < ApplicationController
   end
   def show
     @question = Question.new
+    
+    @ad.update(vistas: @ad.vistas + 1)
   end
 
   def new
@@ -62,6 +64,6 @@ class AdsController < ApplicationController
     redirect_to new_user_session_path, notice: "Necesitas iniciar sesión"
   end
   def ad_params
-    params.require(:ad).permit(:title,:description,:date)
+    params.require(:ad).permit(:title,:description,:date,:adscategories)
   end
 end

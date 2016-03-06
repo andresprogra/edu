@@ -1,4 +1,5 @@
 <%= form_for(@ad) do |f| %>
+
     <% @ad.errors.full_messages.each do |message| %>
         <div class="alert alert-dismissible alert-danger">
             <button type="button" class="close" data-dismiss="alert">×</button>
@@ -14,6 +15,7 @@
     <div>
         <%= f.date_field :date %>
     </div>
+   
     <div>
         <%= f.submit "Guardar", class:"btn btn-js btn-raised btn-success btn-lg" %>
     </div>
