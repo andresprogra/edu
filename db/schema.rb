@@ -26,7 +26,9 @@ ActiveRecord::Schema.define(version: 20160128022827) do
   add_index "ads", ["user_id"], name: "index_ads_on_user_id"
 
   create_table "grupos", force: :cascade do |t|
-    t.string   "nombre"
+    t.string   "semestre"
+    t.string   "grupo"
+    t.string   "carrera"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -67,6 +69,7 @@ ActiveRecord::Schema.define(version: 20160128022827) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["matricula"], name: "index_users_on_matricula", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

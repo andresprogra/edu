@@ -10,7 +10,7 @@ class WelcomeController < ApplicationController
       semestre = current_user.semestre
       grupo = current_user.grupo
       carrera = current_user.carrera
-      @classmate = User.where('semestre = ? AND grupo = ? AND carrera = ?', semestre, grupo, carrera)
+      @classmate = User.where('id != ? AND semestre = ? AND grupo = ? AND carrera = ?', current_user.id  , semestre, grupo, carrera)
       @classmate_count = @classmate.count
     else
       redirect_to new_user_session_path, alert: "Para el uso de la plataforma, debes iniciar sesión."

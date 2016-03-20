@@ -19,8 +19,16 @@ class UsersController < ApplicationController
     if @user.destroy
       redirect_to users_all_path, notice: "Usuario eliminado."
     end
-
   end
+  def update
+    @user = User.find(current_user)
+      if @user.update(user_params)
+        @user.update(puntos: @user.puntos + 1)
+        redirect_to root_path, notice: "Sus datos han sido actualizado correctamente."
+      else
+        render :edit, notice: "Lo sentimos, ocurrió un error. Intentalo de nuevo."
+      end
+   end
   def new
     @yolo = User.new
   end
@@ -58,5 +66,8 @@ class UsersController < ApplicationController
   	end
   end
   
-  
+  private
+  def user_params
+    params.require(:user).permit(:name,:apellido,:semestre,:grupo,:carrera,:matricula,:cargo,:email)
+  end
 end
